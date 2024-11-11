@@ -10,10 +10,10 @@ import { UserEntity } from "./entity/user.entity";
   imports: [
     BoardModule,
     TypeOrmModule.forRoot({
-      type: 'mariadb',
+      type: 'postgres',
       host: 'localhost',
-      port: 3307,
-      username: 'root',
+      port: 8899,
+      username: 'postgres',
       password: '98starjune',
       database: 'ones',
       entities: [BoardEntity, UserEntity],

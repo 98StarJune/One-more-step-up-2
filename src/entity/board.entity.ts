@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { BoardPostReqDto } from "../board.post.req.dto";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from './user.entity';
 
 @Entity()
 export class BoardEntity {
@@ -10,18 +10,12 @@ export class BoardEntity {
   title: string;
 
   @Column()
-  name: string;
-
-  @Column()
   contents: string;
 
   @Column()
   data: string;
 
-  inSert(body: BoardPostReqDto){
-    this.title = body.title;
-    this.name = body.name;
-    this.contents = body.contents;
-    this.data = body.data;
-  }
+  @ManyToOne((type) => UserEntity)
+  @JoinColumn()
+  user: UserEntity;
 }
